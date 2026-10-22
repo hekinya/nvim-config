@@ -6,8 +6,8 @@ return {
         win = {
           position = "float",
           relative = "editor",
-          width = 1,
-          height = 1,
+          width = 0,
+          height = 0,
           border = "none",
           wo = { winbar = "" },
         },
@@ -15,3 +15,4 @@ return {
     },
   },
 }
+
