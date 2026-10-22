@@ -13,3 +13,5 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 set_dashboard_colors()
+
+return {}
