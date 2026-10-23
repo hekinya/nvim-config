@@ -23,3 +23,21 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end)
   end,
 })
+
+-- Follow the directory of the active file, leaving special buffers alone.
+vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
+  group = vim.api.nvim_create_augroup("follow_file_directory", { clear = true }),
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= "" then
+      return
+    end
+    local name = vim.api.nvim_buf_get_name(args.buf)
+    if name == "" then
+      return
+    end
+    local dir = vim.fn.fnamemodify(name, ":p:h")
+    if vim.fn.isdirectory(dir) == 1 and dir ~= vim.fn.getcwd() then
+      vim.api.nvim_set_current_dir(dir)
+    end
+  end,
+})
