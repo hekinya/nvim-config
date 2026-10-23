@@ -4,15 +4,11 @@ return {
     opts = {
       terminal = {
         win = {
-          position = "float",
-          relative = "editor",
-          width = 0,
-          height = 0,
-          border = "none",
+          position = "bottom",
+          height = 0.35,
           wo = { winbar = "" },
         },
       },
     },
   },
 }
-

@@ -9,21 +9,6 @@
 
 require('config.delete_particles').setup()
 
--- Keep a plain :terminal in its own full editor tab as well.
-vim.api.nvim_create_autocmd("TermOpen", {
-  callback = function(args)
-    vim.schedule(function()
-      if vim.api.nvim_buf_is_valid(args.buf)
-        and vim.api.nvim_get_current_buf() == args.buf
-        and vim.bo[args.buf].filetype ~= "snacks_terminal"
-        and vim.api.nvim_win_get_config(0).relative == ""
-      then
-        vim.cmd("tab split")
-      end
-    end)
-  end,
-})
-
 -- Follow the directory of the active file, leaving special buffers alone.
 vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
   group = vim.api.nvim_create_augroup("follow_file_directory", { clear = true }),
@@ -41,3 +26,4 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
     end
   end,
 })
+
